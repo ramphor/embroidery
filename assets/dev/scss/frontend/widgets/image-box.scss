@@ -1,0 +1,98 @@
+//
+// Image Box
+//
+.embroidery-widget-image-box {
+
+	.embroidery-image-box-content {
+		width: 100%; // Hack for Chrome in flex mode
+	}
+
+	@media (min-width: $screen-md-min) {
+
+		&.embroidery-position- {
+
+			&left, &right {
+
+				.embroidery-image-box-wrapper {
+					display: flex;
+				}
+			}
+
+			&right {
+
+				.embroidery-image-box-wrapper {
+					text-align: $end;
+					flex-direction: getValueByDirection(row-reverse, row);
+				}
+			}
+
+			&left {
+
+				.embroidery-image-box-wrapper {
+					text-align: $start;
+					flex-direction: getValueByDirection(row, row-reverse);
+				}
+			}
+
+			&top {
+
+				.embroidery-image-box-img {
+					margin: auto;
+				}
+			}
+		}
+
+		&.embroidery-vertical-align- {
+
+			&top {
+
+				.embroidery-image-box-wrapper {
+					align-items: flex-start;
+				}
+			}
+
+			&middle {
+
+				.embroidery-image-box-wrapper {
+					align-items: center;
+				}
+			}
+
+			&bottom {
+
+				.embroidery-image-box-wrapper {
+					align-items: flex-end;
+				}
+			}
+		}
+	}
+
+	@media (max-width: $screen-sm-max) {
+
+		// TEMP code to override the image spacing
+		.embroidery-image-box-img {
+			margin-left: auto !important;
+			margin-right: auto !important;
+			margin-bottom: 15px;
+		}
+	}
+
+	.embroidery-image-box-img {
+		display: inline-block; // For alignment content
+	}
+
+	.embroidery-image-box-title {
+
+		a {
+			color: inherit;
+		}
+	}
+
+	.embroidery-image-box-wrapper {
+		text-align: center;
+	}
+
+	.embroidery-image-box-description {
+		margin: 0;
+	}
+}

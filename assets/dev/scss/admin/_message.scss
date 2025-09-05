@@ -1,0 +1,112 @@
+
+/*= Embroidery Message
+---------------------------------------*/
+
+.notice {
+
+	&.embroidery-message {
+		@include border-start-property(color, $editor-accent !important);
+		padding: 20px;
+
+		.embroidery-message-inner {
+			display: table;
+			width: 100%;
+
+			.embroidery-message-icon,
+			.embroidery-message-content,
+			.embroidery-message-action {
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+
+		.embroidery-message-icon {
+			color: $editor-accent;
+			font-size: 40px;
+			width: 40px;
+		}
+
+		.embroidery-message-content {
+			padding: 0 20px;
+		}
+
+		p {
+			padding: 0;
+			margin: 0;
+		}
+
+		h3 {
+			margin: 0 0 5px;
+		}
+
+		.embroidery-message-action {
+			text-align: $end;
+
+			.embroidery-button {
+				background-color: $editor-accent;
+				color: #fff;
+				border-color: #7c1337;
+				box-shadow: 0 1px 0 #7c1337;
+				padding: 5px 30px;
+				height: auto;
+				line-height: 20px;
+				text-transform: capitalize;
+
+				i {
+					@include padding-end(5px);
+				}
+
+				&:hover {
+					background-color: #a0124a;
+				}
+
+				&:active {
+					box-shadow: inset 0 1px 0 #7c1337;
+					transform: translateY(1px);
+				}
+			}
+		}
+	}
+}
+
+
+@media (min-width: 1200px) {
+
+	.embroidery-message-action {
+		@include padding-end(10px);
+	}
+}
+
+
+@media (max-width: 600px) {
+
+	.notice {
+
+		&.embroidery-message {
+			padding: 20px;
+
+			.embroidery-message-inner {
+				display: block;
+				text-align: center;
+
+				.embroidery-message-icon,
+				.embroidery-message-content,
+				.embroidery-message-action {
+					display: block;
+				}
+
+				.embroidery-message-action {
+					text-align: center;
+				}
+
+				.embroidery-message-icon {
+					width: auto;
+				}
+
+				.embroidery-message-content {
+					padding: 10px 0;
+				}
+			}
+		}
+	}
+}

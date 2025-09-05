@@ -1,0 +1,17 @@
+.embroidery-control-type-color {
+	// This chaining is required in order to let the `width` rules override the default
+	> .embroidery-control-content {
+
+		> .embroidery-control-field {
+
+			> .embroidery-control-title {
+				width: 70%;
+			}
+
+			> .embroidery-control-input-wrapper {
+				height: 27px; //Fix jumping of panel when the wp-picker is active
+				width: 30%;
+			}
+		}
+	}
+}

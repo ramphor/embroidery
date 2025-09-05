@@ -1,0 +1,86 @@
+//
+// Button
+//
+
+.embroidery-button {
+	display: inline-block;
+	line-height: 1;
+	background-color: $gray;
+	color: #fff;
+	text-align: center;
+	transition: $transition-hover;
+
+	&:hover,
+	&:focus,
+	&:visited {
+		color: #fff;
+		opacity: .9;
+	}
+
+	&.embroidery-size- {
+
+		&xs {
+			font-size: 13px;
+			padding: 10px 20px;
+			border-radius: 2px;
+		}
+
+		&sm {
+			font-size: 15px;
+			padding: 12px 24px;
+			border-radius: 3px;
+		}
+
+		&md {
+			font-size: 16px;
+			padding: 15px 30px;
+			border-radius: 4px;
+		}
+
+		&lg {
+			font-size: 18px;
+			padding: 20px 40px;
+			border-radius: 5px;
+		}
+
+		&xl {
+			font-size: 20px;
+			padding: 25px 50px;
+			border-radius: 6px;
+		}
+	}
+
+	.embroidery-align-icon- {
+
+		&right {
+			float: right;
+			margin-left: 5px;
+		}
+
+		&left {
+			float: left;
+			margin-right: 5px;
+		}
+	}
+
+	.embroidery-button-text {
+		display: inline-block;
+	}
+}
+
+.embroidery-element.embroidery-button- {
+
+	@include button-types( '.embroidery-button' );
+
+}
+
+.embroidery-widget-button {
+
+	.embroidery-button {
+
+		.embroidery-button- {
+
+			@include button-types( '' );
+		}
+	}
+}

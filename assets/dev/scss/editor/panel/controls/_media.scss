@@ -1,0 +1,89 @@
+.embroidery-control-type-media {
+
+	.embroidery-control-media {
+		padding: 7px;
+		border: 1px solid;
+		height: 150px;
+
+		&:not(:hover) {
+			border-color: $editor-lightest;
+
+			.embroidery-control-media-upload-button {
+				background-color: $editor-lightest;
+			}
+		}
+
+		&:hover {
+			border-color: $editor-light;
+
+			.embroidery-control-media-upload-button {
+				background-color: $editor-light;
+			}
+		}
+
+		&.media-empty {
+
+			.embroidery-control-media-image-area {
+				display: none;
+			}
+		}
+
+		&:not(.media-empty) {
+
+			.embroidery-control-media-upload-button {
+				display: none;
+			}
+		}
+
+		> * {
+			height: 100%;
+			cursor: pointer;
+			position: relative;
+		}
+	}
+
+	.fa-plus-circle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		color: #fff;
+		font-size: 20px;
+	}
+
+	.embroidery-control-media-image-area {
+
+		&:not(:hover) {
+
+			.embroidery-control-media-delete {
+				display: none;
+			}
+		}
+
+		&:hover {
+
+			.embroidery-control-media-image {
+				opacity: .5;
+			}
+		}
+	}
+
+	.embroidery-control-media-delete {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		text-align: center;
+		padding: 9.5px;
+		font-size: 11px;
+		color: #fff;
+		background-color: $editor-light;
+		text-transform: uppercase;
+	}
+
+	.embroidery-control-media-image {
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+	}
+}

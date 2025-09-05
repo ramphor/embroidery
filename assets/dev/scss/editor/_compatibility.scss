@@ -1,0 +1,57 @@
+// Compatibility embroidery editor for themes and plugins (Preview)
+
+body.embroidery-editor-active {
+
+	.embroidery {
+
+		&.embroidery-edit-mode {
+
+			// Hack for pojo.me themes
+			&.layout-section {
+
+				.entry-content {
+					overflow: visible;
+				}
+			}
+
+			// Hack for bluchic.com themes
+			.article {
+				overflow: visible;
+			}
+
+			// Hack for Zerif Pro theme
+			.embroidery-element-overlay {
+
+				.embroidery-editor-element-settings {
+					clear: unset;
+				}
+			}
+
+			// Hack for some stupid themes
+			.embroidery-element.embroidery-section {
+				overflow: visible;
+			}
+		}
+	}
+}
+
+#embroidery {
+
+	// Prevent external animate.css embed which causing elements overlay issue
+	.animated {
+		animation-fill-mode: none !important;
+	}
+
+	// Hack for Make theme issue
+	ul.embroidery-editor-element-settings {
+		word-break: normal;
+
+		// Hack for Divi theme
+		padding: 0;
+	}
+
+	// Hack for jQuery Masonry Image Gallery plugin
+	.gallery {
+		opacity: 1;
+	}
+}

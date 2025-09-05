@@ -1,0 +1,44 @@
+// Core variables and mixins
+@import "../helpers/variables";
+@import "../helpers/mixins";
+
+// Common
+@import "../common/common";
+
+// Core CSS
+@import "global";
+@import "grid";
+
+// Utility classes
+@import "../helpers/utilities";
+
+//Forms (Input, Textarea, Select Etc..)
+@import "forms";
+
+// Widgets
+@import "widgets";
+
+// Slick
+@import "slick";
+
+// Swiper
+@import "swiper";
+
+// Lightbox
+@import "lightbox";
+
+// Animate
+@import "animate";
+
+// Shapes
+@import "shapes";
+
+// Compatibility
+@import "compatibility";
+
+// Visibility (for preview mode or front-end)
+body:not(.embroidery-editor-active) {
+	@include visibility() {
+		display: none;
+	};
+}

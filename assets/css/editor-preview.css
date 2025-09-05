@@ -1,0 +1,752 @@
+.pen {
+  position: relative;
+  outline: none; }
+  .pen:not([data-embroidery-inline-editing-toolbar="advanced"]) {
+    white-space: pre-wrap; }
+  .pen-menu {
+    -webkit-box-shadow: 1px 2px 3px -2px #222;
+            box-shadow: 1px 2px 3px -2px #222;
+    background-color: #6d7882;
+    position: fixed;
+    -webkit-border-radius: 3px;
+            border-radius: 3px;
+    z-index: 9998; }
+    .pen-menu:after {
+      top: 100%;
+      content: '';
+      position: absolute;
+      border: 6px solid transparent;
+      border-top-color: #6d7882;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%); }
+    .pen-menu-below:after {
+      top: 0;
+      -webkit-transform: translateX(-50%) translateY(-100%) rotate(180deg);
+          -ms-transform: translateX(-50%) translateY(-100%) rotate(180deg);
+              transform: translateX(-50%) translateY(-100%) rotate(180deg); }
+  .pen-icon {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 35px;
+    padding: 0 10px;
+    font-size: 21px;
+    color: #d5dadf;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
+    .pen-icon:hover {
+      background: #556068; }
+    .pen-icon:first-of-type {
+      -webkit-border-top-left-radius: 3px;
+              border-top-left-radius: 3px;
+      -webkit-border-bottom-left-radius: 3px;
+              border-bottom-left-radius: 3px; }
+    .pen-icon:last-of-type {
+      -webkit-border-top-right-radius: 3px;
+              border-top-right-radius: 3px;
+      -webkit-border-bottom-right-radius: 3px;
+              border-bottom-right-radius: 3px; }
+    .pen-icon[data-group], .pen-icon[data-action="closeGroup"] {
+      display: none; }
+    .pen-icon[data-action="close"]:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: 60%;
+      width: 1px;
+      background-color: #556068; }
+    .pen-icon.active {
+      background-color: #556068;
+      -webkit-box-shadow: inset 2px 2px 4px #556068;
+              box-shadow: inset 2px 2px 4px #556068; }
+  .pen-group-icon:after {
+    font-family: FontAwesome;
+    font-size: 12px;
+    content: '\f0d7';
+    padding-left: 4px;
+    color: #71d7f7; }
+  .pen-input-wrapper {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .pen-input-wrapper .pen-url-input {
+      font-size: 12px;
+      line-height: 1.5;
+      padding: 0;
+      padding-left: 10px;
+      width: 250px; }
+      .pen-input-wrapper .pen-url-input, .pen-input-wrapper .pen-url-input:focus {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        color: #fff; }
+      .pen-input-wrapper .pen-url-input::-webkit-input-placeholder {
+        color: #d5dadf; }
+      .pen-input-wrapper .pen-url-input::-moz-placeholder {
+        color: #d5dadf; }
+      .pen-input-wrapper .pen-url-input:-ms-input-placeholder {
+        color: #d5dadf; }
+      .pen-input-wrapper .pen-url-input::-ms-input-placeholder {
+        color: #d5dadf; }
+      .pen-input-wrapper .pen-url-input::placeholder {
+        color: #d5dadf; }
+  .pen-input-label {
+    margin: 0; }
+  .pen-placeholder:before {
+    content: attr(data-pen-placeholder);
+    position: absolute;
+    font-weight: normal;
+    color: #757575;
+    opacity: 0.6; }
+  .pen-external-url-checkbox {
+    display: none; }
+    .pen-external-url-checkbox:checked + i {
+      color: #fff; }
+
+.embroidery-inline-editing i:not([class]) {
+  font-style: italic; }
+
+.embroidery-inline-editing b {
+  font-weight: bold; }
+
+.embroidery-inline-editing u {
+  text-decoration: underline; }
+
+@-webkit-keyframes placeholder-section {
+  0% {
+    height: 0;
+    opacity: 0; }
+  100% {
+    height: 40px;
+    opacity: .9; } }
+
+@keyframes placeholder-section {
+  0% {
+    height: 0;
+    opacity: 0; }
+  100% {
+    height: 40px;
+    opacity: .9; } }
+
+@-webkit-keyframes placeholder-column {
+  0% {
+    width: 0;
+    opacity: 0; }
+  100% {
+    width: 10px;
+    opacity: .9; } }
+
+@keyframes placeholder-column {
+  0% {
+    width: 0;
+    opacity: 0; }
+  100% {
+    width: 10px;
+    opacity: .9; } }
+
+@-webkit-keyframes placeholder-widget {
+  0% {
+    height: 0;
+    opacity: 0; }
+  100% {
+    height: 10px;
+    opacity: .9; } }
+
+@keyframes placeholder-widget {
+  0% {
+    height: 0;
+    opacity: 0; }
+  100% {
+    height: 10px;
+    opacity: .9; } }
+
+@-webkit-keyframes section-outline {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes section-outline {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+body.embroidery-editor-active .embroidery.embroidery-edit-mode.layout-section .entry-content {
+  overflow: visible; }
+
+body.embroidery-editor-active .embroidery.embroidery-edit-mode .article {
+  overflow: visible; }
+
+body.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element-overlay .embroidery-editor-element-settings {
+  clear: unset; }
+
+body.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element.embroidery-section {
+  overflow: visible; }
+
+#embroidery .animated {
+  -webkit-animation-fill-mode: none !important;
+          animation-fill-mode: none !important; }
+
+#embroidery ul.embroidery-editor-element-settings {
+  word-break: normal;
+  padding: 0; }
+
+#embroidery .gallery {
+  opacity: 1; }
+
+html.embroidery-html {
+  margin-top: 0 !important; }
+
+#embroidery {
+  position: relative; }
+
+.embroidery-editor-active .embroidery-inner {
+  margin-top: 25px; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element-empty .embroidery-sortable-placeholder {
+  display: none; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-empty-view {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-first-add {
+  text-align: center;
+  border: 1px dashed #d5dadf;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-first-add .embroidery-icon {
+    font-size: 19px;
+    color: #a4afb7;
+    cursor: pointer; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element > .embroidery-element-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  letter-spacing: 0;
+  z-index: 9998;
+  pointer-events: none; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element.embroidery-widget-empty {
+  background-color: rgba(213, 218, 223, 0.8); }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element.embroidery-widget-empty .embroidery-widget-empty-icon {
+    color: #c2cbd2;
+    font-size: 22px;
+    display: block;
+    text-align: center;
+    padding: 10px 0; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element:not(:hover):not(.embroidery-element-editable) > .embroidery-element-overlay .embroidery-editor-element-settings {
+  display: none; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element[data-side="top"]:before, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element[data-side="bottom"] + .embroidery-element:before {
+  content: '';
+  background-color: #71d7f7;
+  -webkit-transition-timing-function: ease-out;
+       -o-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  opacity: .9;
+  height: 10px;
+  -webkit-animation: placeholder-widget 500ms;
+          animation: placeholder-widget 500ms;
+  display: block; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-element[data-side="bottom"]:last-child:after {
+  content: '';
+  background-color: #71d7f7;
+  -webkit-transition-timing-function: ease-out;
+       -o-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  opacity: .9;
+  height: 10px;
+  -webkit-animation: placeholder-widget 500ms;
+          animation: placeholder-widget 500ms;
+  display: block; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section > .embroidery-element-overlay {
+  left: 0;
+  bottom: 0; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section > .embroidery-element-overlay:after {
+    position: absolute;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+    bottom: 2px;
+    outline: 2px solid #71d7f7;
+    -webkit-animation: section-outline .75s;
+            animation: section-outline .75s; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section:hover > .embroidery-element-overlay:after, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section.embroidery-element-editable > .embroidery-element-overlay:after {
+  content: ''; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-top-section > .embroidery-container > .embroidery-row {
+  min-height: 80px; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-inner-section:first-child {
+  margin-top: 15px; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-inner-section > .embroidery-container > .embroidery-row {
+  min-height: 40px; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-element-settings {
+  position: absolute;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 26px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  z-index: 1;
+  pointer-events: all; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-element-settings .embroidery-editor-element-trigger.embroidery-active ~ .embroidery-editor-element-setting {
+    margin-left: 0; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-element-settings .embroidery-editor-element-trigger:not(.embroidery-active) ~ .embroidery-editor-element-setting {
+    width: 0;
+    font-size: 0;
+    padding: 0; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-element-settings .embroidery-editor-element-remove:hover .fa {
+    color: #f00; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-element-setting {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+  color: #fff;
+  width: 25px;
+  -webkit-transition: margin .3s, width .3s, font .3s;
+  -o-transition: margin .3s, width .3s, font .3s;
+  transition: margin .3s, width .3s, font .3s;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-section-settings {
+  top: 1px;
+  left: 50%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#41c9f4), to(#71d7f7));
+  background-image: -webkit-linear-gradient(top, #41c9f4, #71d7f7);
+  background-image: -o-linear-gradient(top, #41c9f4, #71d7f7);
+  background-image: linear-gradient(to bottom, #41c9f4, #71d7f7);
+  -webkit-border-radius: 3px 3px 0 0;
+          border-radius: 3px 3px 0 0;
+  -webkit-transform: translateX(-50%) translateY(-100%);
+      -ms-transform: translateX(-50%) translateY(-100%);
+          transform: translateX(-50%) translateY(-100%); }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-section-settings .embroidery-editor-element-setting:hover {
+    background-color: #10bcf2; }
+  @media (min-width: 1025px) {
+    .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-section-settings .embroidery-editor-element-setting:first-child {
+      padding-left: 1px; }
+      .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-section-settings .embroidery-editor-element-setting:first-child:not(.embroidery-active) {
+        padding-right: 1px; }
+    .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-section-settings .embroidery-editor-element-setting:last-child {
+      padding-right: 1px; } }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-column-settings {
+  top: -1px;
+  left: -1px;
+  -webkit-border-radius: 0 0 3px 0;
+          border-radius: 0 0 3px 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#6d7882), to(#556068));
+  background-image: -webkit-linear-gradient(top, #6d7882, #556068);
+  background-image: -o-linear-gradient(top, #6d7882, #556068);
+  background-image: linear-gradient(to bottom, #6d7882, #556068); }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-column-settings .embroidery-editor-element-setting:hover {
+    background-color: #495157; }
+  @media (min-width: 1025px) {
+    .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-column-settings .embroidery-editor-element-setting:first-child {
+      padding-left: 1px; }
+      .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-column-settings .embroidery-editor-element-setting:first-child:not(.embroidery-active) {
+        padding-right: 1px; }
+    .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-column-settings .embroidery-editor-element-setting:last-child {
+      padding-right: 1px; } }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-widget-settings {
+  z-index: 2;
+  top: -1px;
+  right: -1px;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#41c9f4), to(#71d7f7));
+  background-image: -webkit-linear-gradient(bottom, #41c9f4, #71d7f7);
+  background-image: -o-linear-gradient(bottom, #41c9f4, #71d7f7);
+  background-image: linear-gradient(to top, #41c9f4, #71d7f7);
+  -webkit-border-radius: 0 0 0 3px;
+          border-radius: 0 0 0 3px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-widget-settings .embroidery-editor-element-setting:hover {
+    background-color: #10bcf2; }
+  @media (min-width: 1025px) {
+    .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-widget-settings .embroidery-editor-element-setting:first-child {
+      padding-right: 1px; }
+      .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-widget-settings .embroidery-editor-element-setting:first-child:not(.embroidery-active) {
+        padding-left: 1px; }
+    .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-widget-settings .embroidery-editor-element-setting:last-child {
+      padding-left: 1px; } }
+
+@media (min-width: 1025px) {
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-element-trigger {
+    cursor: move; } }
+
+@media (max-width: 1024px) {
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-editor-element-setting:not(.embroidery-editor-element-trigger) {
+    display: none; } }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section-filled .embroidery-editor-column-settings .embroidery-editor-element-add, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section-filled .embroidery-editor-column-settings .embroidery-editor-element-duplicate {
+  display: none; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section-filled .embroidery-sortable-placeholder.embroidery-column {
+  display: none; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-section-filled .embroidery-row.embroidery-draggable-over {
+  border: 1px solid #f00; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column > .embroidery-element-overlay {
+  left: 0;
+  bottom: 0; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column > .embroidery-element-overlay:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    outline: 1px dashed #6d7882; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column:hover > .embroidery-element-overlay, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column.embroidery-element-editable > .embroidery-element-overlay {
+  border: 1px solid #ffffff; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column:hover > .embroidery-element-overlay:after, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column.embroidery-element-editable > .embroidery-element-overlay:after {
+    content: ''; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column.embroidery-dragging-on-child > .embroidery-element-overlay {
+  border: 1px solid #71d7f7; }
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column.embroidery-dragging-on-child > .embroidery-element-overlay:after {
+    display: none; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column > .ui-resizable-e, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column > .ui-resizable-w {
+  cursor: col-resize;
+  width: 7px;
+  position: absolute;
+  right: -5px;
+  top: 0;
+  height: 100%; }
+
+.embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column:last-of-type > .ui-resizable-e, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column:last-of-type > .ui-resizable-w {
+  display: none !important; }
+
+@media (max-width: 1024px) {
+  .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column > .ui-resizable-e, .embroidery-editor-active .embroidery.embroidery-edit-mode .embroidery-column > .ui-resizable-w {
+    display: none !important; } }
+
+.embroidery-editor-active .embroidery-column-wrap.embroidery-element-empty .embroidery-widget-wrap {
+  min-height: 60px; }
+  @media (min-width: 768px) {
+    .embroidery-editor-active .embroidery-column-wrap.embroidery-element-empty .embroidery-widget-wrap {
+      margin: 10px; } }
+
+.embroidery-editor-active .embroidery-widget.embroidery-loading {
+  opacity: .3; }
+
+.embroidery-editor-active .embroidery-widget:not(.embroidery-loading):not(.embroidery-widget-menu-anchor) {
+  -webkit-transition: all .1s;
+  -o-transition: all .1s;
+  transition: all .1s; }
+
+.embroidery-editor-active .embroidery-widget.embroidery-element-editable, .embroidery-editor-active .embroidery-widget.embroidery-widget-can-edit:hover {
+  outline: 1px solid #71d7f7; }
+
+.embroidery-editor-active .embroidery-widget:not(:hover) .embroidery-editor-element-settings {
+  display: none; }
+
+.embroidery-editor-active .handle {
+  display: none; }
+
+.embroidery-editor-active .embroidery-sortable-helper {
+  position: absolute;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  background-color: #fff;
+  text-align: center;
+  color: #556068;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: move; }
+  .embroidery-editor-active .embroidery-sortable-helper .icon {
+    font-size: 28px;
+    padding-top: 15px;
+    line-height: 1; }
+  .embroidery-editor-active .embroidery-sortable-helper .embroidery-element-title-wrapper {
+    display: table;
+    width: 100%; }
+  .embroidery-editor-active .embroidery-sortable-helper .title {
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    display: table-cell;
+    vertical-align: middle;
+    height: 40px; }
+
+.embroidery-editor-active .embroidery-inline-editing {
+  min-height: 15px; }
+
+.embroidery-sortable-placeholder:not(.embroidery-column-placeholder) {
+  background-color: #71d7f7;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+  opacity: .9; }
+
+.embroidery-section-placeholder {
+  height: 40px;
+  -webkit-animation-name: placeholder-section;
+          animation-name: placeholder-section; }
+
+.embroidery-column-placeholder {
+  position: relative; }
+  .embroidery-column-placeholder:before, .embroidery-column-placeholder:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    left: 10px; }
+  .embroidery-column-placeholder:before {
+    border: 1px solid #6d7882; }
+  .embroidery-column-placeholder:after {
+    border: 1px dashed #fff; }
+
+.embroidery-widget-placeholder {
+  height: 10px;
+  -webkit-animation-name: placeholder-widget;
+          animation-name: placeholder-widget; }
+
+.embroidery-draggable-over:not([data-dragged-element="section"]):not([data-dragged-is-inner="true"]) > .embroidery-empty-view > .embroidery-first-add:after,
+.embroidery-first-add.embroidery-html5dnd-current-element:after {
+  content: '';
+  background-color: #71d7f7;
+  -webkit-transition-timing-function: ease-out;
+       -o-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  opacity: .9;
+  height: 10px;
+  -webkit-animation: placeholder-widget 500ms;
+          animation: placeholder-widget 500ms;
+  width: 100%; }
+
+.embroidery-draggable-over:not([data-dragged-element="section"]):not([data-dragged-is-inner="true"]) > .embroidery-empty-view > .embroidery-first-add .embroidery-icon,
+.embroidery-first-add.embroidery-html5dnd-current-element .embroidery-icon {
+  display: none; }
+
+.embroidery-draggable-over[data-dragged-element="section"][data-dragged-is-inner="true"] .embroidery-inner-column .embroidery-sortable-placeholder {
+  display: none; }
+
+.embroidery-add-section {
+  background-color: rgba(255, 255, 255, 0.5);
+  max-width: 1140px;
+  position: relative; }
+  .embroidery-add-section:not(.embroidery-dragging-on-child) {
+    border: 2px dashed #d5dadf; }
+  .embroidery-add-section.embroidery-dragging-on-child {
+    border: 3px dashed #71d7f7; }
+  .embroidery-add-section[data-view="choose-action"] .embroidery-select-preset {
+    display: none; }
+  .embroidery-add-section[data-view="select-preset"] .embroidery-add-new-section {
+    display: none; }
+  @media (max-width: 479px) {
+    .embroidery-add-section {
+      display: none; } }
+
+.embroidery-add-section-inner {
+  text-align: center;
+  margin-top: 10px;
+  padding: 40px 0; }
+
+.embroidery-add-new-section {
+  display: inline-block; }
+  .embroidery-add-new-section .embroidery-button {
+    color: #fff;
+    background-image: none;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: 1;
+    height: 40px;
+    min-width: 170px;
+    padding: 0 20px;
+    border: none;
+    -webkit-border-radius: 3px;
+            border-radius: 3px;
+    cursor: pointer; }
+    .embroidery-add-new-section .embroidery-button:hover {
+      opacity: 0.85;
+      -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2);
+              box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.2); }
+    .embroidery-add-new-section .embroidery-button:active {
+      -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.1);
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.1); }
+  .embroidery-add-new-section .embroidery-add-section-button {
+    background-color: #B7084E; }
+  .embroidery-add-new-section .embroidery-add-template-button {
+    background-color: #6d7882;
+    margin-left: 25px; }
+
+.embroidery-add-section-drag-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1;
+  color: #556068;
+  margin-top: 15px; }
+
+.embroidery-add-section-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  color: #d5dadf; }
+  .embroidery-add-section-close:hover {
+    color: #6d7882; }
+
+.embroidery-select-preset-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  color: #556068; }
+
+.embroidery-select-preset-list {
+  list-style: none;
+  padding: 0 25px;
+  margin: 20px auto 0;
+  overflow: hidden;
+  max-width: 700px; }
+  .embroidery-select-preset-list .embroidery-preset {
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    float: left; }
+    .embroidery-select-preset-list .embroidery-preset:hover path {
+      fill: #6d7882; }
+    .embroidery-select-preset-list .embroidery-preset:not(:hover) path {
+      fill: #d5dadf; }
+    .embroidery-select-preset-list .embroidery-preset svg {
+      height: 50px; }
+
+#embroidery-add-new-section {
+  margin: 60px auto; }
+  #embroidery-add-new-section[data-view="choose-action"] .embroidery-add-section-close {
+    display: none; }
+
+.embroidery-add-section-inline {
+  margin: 10px auto; }
+
+.embroidery-column-percents-tooltip {
+  position: absolute;
+  display: none;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #fff;
+  font-size: 10px;
+  background-color: #556068;
+  width: 40px;
+  padding: 3.5px 0;
+  text-align: center;
+  z-index: 1;
+  line-height: 1; }
+  .embroidery-column-percents-tooltip:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8.5px solid transparent;
+    top: 0; }
+  .embroidery-column-percents-tooltip[data-side="left"] {
+    -webkit-border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 3px;
+    right: 15px; }
+    .embroidery-column-percents-tooltip[data-side="left"]:after {
+      left: 100%;
+      border-left-color: #556068;
+      border-right-width: 0; }
+  .embroidery-column-percents-tooltip[data-side="right"] {
+    -webkit-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+    left: 15px; }
+    .embroidery-column-percents-tooltip[data-side="right"]:after {
+      right: 100%;
+      border-right-color: #556068;
+      border-left-width: 0; }
+
+.embroidery-editor-preview .embroidery-element-overlay,
+.embroidery-editor-preview .embroidery-empty,
+.embroidery-editor-preview .embroidery-add-section,
+.embroidery-editor-preview .embroidery-element-empty,
+.embroidery-editor-preview .embroidery-widget-empty {
+  display: none; }
+/*# sourceMappingURL=editor-preview.css.map */

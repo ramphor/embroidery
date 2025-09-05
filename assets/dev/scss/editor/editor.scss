@@ -1,0 +1,28 @@
+// Core variables and mixins
+@import "../helpers/variables";
+@import "../helpers/mixins";
+
+// Common
+@import "../common/common";
+
+// Utility classes
+@import "../helpers/utilities";
+
+// Reboot CSS
+@import "wrapper";
+@import "global";
+@import "buttons";
+@import "forms";
+
+// Components
+@import "perfect-scrollbar";
+@import "nprogress";
+@import "panel/panel";
+@import "mode-switcher";
+@import "../../../../modules/history/assets/scss/revisions";
+@import "../../../../modules/history/assets/scss/history";
+
+@import "devices";
+@import "tipsy";
+@import "templates-modal";
+@import "notifications";

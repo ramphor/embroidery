@@ -1,0 +1,11 @@
+
+.form-table:not(.embroidery-maintenance-mode-is-enabled) {
+
+	.embroidery-default-hide {
+		display: none;
+	}
+}
+
+.embroidery-maintenance-mode-error{
+	color: red;
+}

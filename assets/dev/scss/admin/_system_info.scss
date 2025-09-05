@@ -1,0 +1,70 @@
+
+/*= Embroidery System Info
+---------------------------------------*/
+
+#embroidery-system-info {
+	padding: 15px;
+
+	.embroidery-system-info-section {
+		margin-bottom: 10px;
+
+		& > .embroidery-system-info-report-name {
+			padding-left: 10px;
+			border-bottom: 1px solid #e1e1e1;
+		}
+
+		.widefat {
+			white-space: pre;
+		}
+	}
+
+	.embroidery-system-info-report-name {
+		text-transform: uppercase;
+		font-size: 14px;
+		margin: 0;
+		line-height: 2;
+	}
+
+	.embroidery-system-info-report-row {
+		overflow: hidden;
+		padding: 5px 0;
+
+		> * {
+			float: left;
+		}
+	}
+
+	.embroidery-system-info-report-field, .embroidery-system-info-field-recommendation {
+		padding-left: 10px;
+		color: #7F7F7F;
+	}
+
+	.embroidery-system-info-report-fields {
+		padding-left: 20px;
+	}
+
+	.embroidery-system-info-plugin-name {
+		color: #000;
+	}
+
+	.embroidery-system-info-plugin-properties {
+		padding: 10px;
+	}
+
+	#embroidery-system-info-raw-code {
+		width: 100%;
+		height: 200px;
+	}
+
+	#embroidery-system-info-raw-code-label {
+		padding: 5px;
+		display: block;
+	}
+
+	.embroidery-warning {
+
+		td:first-child {
+			@include border-start(3px solid $editor-orange);
+		}
+	}
+}

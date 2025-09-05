@@ -1,0 +1,263 @@
+//
+// Global selectors for Embroidery Front-End
+//
+
+.embroidery {
+
+	* {
+		&, &:before, &:after {
+			box-sizing: border-box;
+		}
+	}
+
+	// Reset Style for some themes and browsers
+	hyphens: manual;
+
+	a {
+		box-shadow: none;
+		text-decoration: none;
+	}
+
+	hr {
+		margin: 0;
+		background-color: transparent;
+	}
+
+	img {
+		height: auto;
+		max-width: 100%;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.embroidery-widget:not(.embroidery-widget-text-editor) figure {
+			margin: 0;
+	}
+
+	// Responsive Embed
+	embed,
+	iframe,
+	object,
+	video {
+		max-width: 100%;
+		width: 100%;
+		margin: 0;
+		line-height: 1;
+		border: none;
+	}
+
+	.embroidery-custom-embed {
+		line-height: 0; //for google maps margin bottom
+	}
+
+	// Background Video
+	.embroidery-background-video-container {
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+		overflow: hidden;
+		z-index: $ground-layer;
+		transition: opacity 1s;
+
+		&.embroidery-loading {
+			opacity: 0;
+		}
+	}
+
+	.embroidery-background-video-embed {
+		max-width: none;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.embroidery-background-video {
+		position: absolute;
+		max-width: none;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+	}
+
+	.embroidery-html5-video {
+		object-fit: cover; // For HTML5 portrait video
+	}
+	// End Background Video
+
+	.embroidery-background-overlay {
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+	}
+}
+
+.embroidery-invisible {
+	visibility: hidden;
+}
+
+// Alignment Classes
+.embroidery-align- {
+
+	&center {
+		text-align: center;
+
+		.embroidery-button {
+			width: auto;
+		}
+	}
+
+	&right {
+		text-align: right;
+
+		.embroidery-button {
+			width: auto;
+		}
+	}
+
+	&left {
+		text-align: left;
+
+		.embroidery-button {
+			width: auto;
+		}
+	}
+
+	&justify {
+
+		.embroidery-button {
+			width: 100%;
+		}
+	}
+}
+
+.embroidery-custom-embed-play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+
+	i {
+		font-size: 100px;
+		color: #fff;
+		opacity: 0.8;
+		text-shadow: 1px 0 6px rgba(0, 0, 0, 0.3);
+		transition: all .5s;
+	}
+
+	&.embroidery-playing {
+
+		i {
+			font-family: 'FontAwesome';
+			animation: fa-spin 2s infinite linear;
+
+			&:before {
+				content: "\f1ce";
+			}
+		}
+	}
+}
+
+.embroidery-swiper-button {
+	position: absolute;
+	display: inline-flex; // Position exactly in center
+	z-index: 1;
+	cursor: pointer;
+	font-size: 25px;
+	color: $slides_gui;
+	top: 50%;
+	transform: translateY(-50%);
+
+	&.swiper-button-disabled {
+		opacity: 0.3;
+	}
+}
+
+// Alignment for Tablet
+@media (max-width: $screen-md-max) {
+
+	.embroidery-tablet-align- {
+
+		&center {
+			text-align: center;
+
+			.embroidery-button {
+				width: auto;
+			}
+		}
+
+		&right {
+			text-align: right;
+
+			.embroidery-button {
+				width: auto;
+			}
+		}
+
+		&left {
+			text-align: left;
+
+			.embroidery-button {
+				width: auto;
+			}
+		}
+
+		&justify {
+
+			.embroidery-button {
+				width: 100%;
+			}
+		}
+	}
+}
+
+// Alignment for Mobile
+@media (max-width: $screen-sm-max) {
+
+	.embroidery-mobile-align- {
+
+		&center {
+			text-align: center;
+
+			.embroidery-button {
+				width: auto;
+			}
+		}
+
+		&right {
+			text-align: right;
+
+			.embroidery-button {
+				width: auto;
+			}
+		}
+
+		&left {
+			text-align: left;
+
+			.embroidery-button {
+				width: auto;
+			}
+		}
+
+		&justify {
+
+			.embroidery-button {
+				width: 100%;
+			}
+		}
+	}
+}
+
+// Admin Bar - Icon (Front-End)
+#wpadminbar #wp-admin-bar-embroidery_edit_page > .ab-item::before {
+	content: "\e800";
+	font-family: eicons;
+	font-size: 12px;
+	margin-top: 5px;
+}
+

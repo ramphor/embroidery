@@ -1,0 +1,252 @@
+//
+// Grid
+//
+
+.embroidery {
+
+	&:after {
+		position: absolute;
+		opacity: 0;
+		width: 0;
+		height: 0;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(0,0,0,0);
+		border: 0;
+
+		@media (min-width: $screen-lg-min) {
+			content: 'desktop';
+		}
+
+		@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+			content: 'tablet';
+		}
+
+		@media (max-width: $screen-sm-max) {
+			content: 'mobile';
+		}
+
+	}
+}
+
+// Section
+.embroidery-section {
+	position: relative;
+
+	// Container
+	.embroidery-container {
+		display: flex;
+		margin-right: auto;
+		margin-left: auto;
+		position: relative;
+	}
+
+	// Max-width of container depending on section settings
+	&.embroidery-section-boxed {
+		& > .embroidery-container {
+			max-width: 1140px;
+		}
+	}
+
+	// Stretched section settings
+	&.embroidery-section-stretched {
+		position: relative;
+		width: 100%;
+	}
+
+	// In section min-height / fit to screen mode
+	&.embroidery-section-items- {
+
+		&top {
+
+			> .embroidery-container {
+				align-items: flex-start;
+			}
+		}
+
+		&middle {
+
+			> .embroidery-container {
+				align-items: center;
+			}
+		}
+
+		&bottom {
+
+			> .embroidery-container {
+				align-items: flex-end;
+			}
+		}
+	}
+
+	@media (min-width: $screen-md-min) {
+
+		// Section Full Height (note: don't be smart - min-height does not work well with the content position)
+		&.embroidery-section-height-full {
+			height: 100vh;
+
+			> .embroidery-container {
+				height: 100%;
+			}
+		}
+	}
+}
+
+
+// In columns stretch mode
+
+.embroidery-container {
+
+	> .embroidery-row {
+
+		> .embroidery-column {
+
+			> .embroidery-column-wrap {
+
+				.embroidery-section-content-top > & {
+					align-items: flex-start;
+				}
+
+				.embroidery-section-content-middle > & {
+					align-items: center;
+				}
+
+				.embroidery-section-content-bottom > & {
+					align-items: flex-end;
+				}
+			}
+		}
+	}
+}
+
+// Row
+.embroidery-row {
+	width: 100%;
+	display: flex;
+
+	@media (max-width: $screen-md-max) {
+		flex-wrap: wrap;
+	}
+}
+
+// Widget
+.embroidery-column-wrap {
+	width: 100%;
+	position: relative;
+	display: flex;
+}
+
+.embroidery-widget-wrap {
+	position: relative;
+	width: 100%;
+}
+
+.embroidery-widget {
+	position: relative;
+
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
+}
+
+// Columns
+.embroidery-column {
+	position: relative;
+	min-height: 1px;
+	display: flex;
+
+}
+
+@mixin embroidery-grid-classes {
+
+	@each $sizeKey, $size in $column-sizes {
+
+		&.embroidery-col-#{$sizeKey}, &[data-col="#{$sizeKey}"] {
+			width: $size;
+		}
+	}
+}
+
+@mixin embroidery-responsive($breakpoint-name) {
+
+	@each $size-name, $size in $column-sizes {
+
+		&.embroidery-#{$breakpoint-name}-#{$size-name} {
+			width: $size;
+		}
+	}
+
+}
+
+// Columns Gap
+.embroidery-row {
+	> .embroidery-column {
+		> .embroidery-element-populated {
+			.embroidery-column-gap-narrow  > & {
+				padding: 5px;
+			}
+
+			.embroidery-column-gap-default > & {
+				padding: 10px;
+			}
+
+			.embroidery-column-gap-extended > & {
+				padding: 15px;
+			}
+
+			.embroidery-column-gap-wide > & {
+				padding: 20px;
+			}
+
+			.embroidery-column-gap-wider > & {
+				padding: 30px;
+			}
+		}
+	}
+}
+
+// Columns Gap for Inner section
+.embroidery-inner-section {
+
+	.embroidery-column-gap-no {
+
+		.embroidery-element-populated {
+			padding: 0;
+		}
+	}
+}
+
+// Responsive Grid
+
+@media (min-width: $screen-md-min) {
+
+	.embroidery-column {
+		@include embroidery-grid-classes;
+	}
+}
+
+.embroidery-column {
+
+	@media (max-width: $screen-xs-max) {
+		@include embroidery-responsive(xs);
+	}
+
+	@media (max-width: $screen-sm-max) {
+		@include embroidery-responsive(sm);
+	}
+
+	@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+		@include embroidery-responsive(md);
+	}
+}
+
+@media (max-width: $screen-sm-max) {
+
+	.embroidery-column {
+		width: 100%;
+	}
+
+	.embroidery-reverse-mobile > .embroidery-container > .embroidery-row {
+		flex-direction: column-reverse;
+	}
+}

@@ -1,0 +1,216 @@
+//
+// Admin CSS for Embroidery
+//
+
+// Core variables and mixins
+@import "../helpers/variables";
+@import "../helpers/mixins";
+
+// Common
+@import "../common/common";
+
+body {
+
+	&.embroidery-editor-active {
+
+		.embroidery-switch-mode-off {
+			display: none;
+		}
+
+		#embroidery-switch-mode-button {
+			background-color: #f7f7f7;
+			color: #555;
+			border-color: #ccc;
+			box-shadow: 0 1px 0 #ccc !important;
+			text-shadow: unset;
+
+			&:hover {
+				background-color: #e9e9e9;
+			}
+
+			&:active {
+				box-shadow: inset 0 1px 0 #ccc;
+				transform: translateY(1px);
+			}
+		}
+
+		#embroidery-editor {
+			display: table;
+		}
+
+		#postdivrich {
+			display: none !important;
+		}
+	}
+
+	&.embroidery-editor-inactive {
+
+		.embroidery-switch-mode-on {
+			display: none;
+		}
+
+		#embroidery-editor {
+			display: none;
+		}
+	}
+}
+
+// Dashboard Icon
+#adminmenu {
+
+	#toplevel_page_embroidery,
+	#toplevel_page_edit-post_type-embroidery_library {
+
+		div.wp-menu-image:before {
+			content: "\e800";
+			font-family: eicons;
+			font-size: 14px;
+			margin-top: 3px;
+		}
+
+		// Menu Go Pro
+		a[href="admin.php?page=go_embroidery_pro"] {
+			color: #d54e21;
+		}
+
+		.dashicons.dashicons-star-filled {
+			height: auto;
+		}
+	}
+}
+
+.embroidery-plugins-gopro {
+	color: $editor-success;
+	font-weight: bold;
+}
+
+
+// Switcher Editor
+#embroidery-switch-mode {
+	margin: 15px 0;
+}
+
+.embroidery-button {
+	padding: 12.5px 25px;
+	display: inline-block;
+	line-height: 1;
+	border: 1px solid;
+	border-radius: 3px;
+	outline: none;
+	cursor: pointer;
+
+	.eicon-embroidery {
+		@include margin-end(5px);
+	}
+}
+
+#embroidery-editor {
+	background-color: #F7F7F7;
+	border: 1px solid #DDD;
+	height: 300px;
+	width: 100%;
+	transition: all 0.5s ease;
+
+	&:hover {
+		background-color: #ffffff;
+	}
+
+	@import "../editor/loader";
+
+	.embroidery-loader-box {
+		background-color: $editor-light;
+	}
+
+}
+
+#embroidery-go-to-edit-page-link {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+
+	&.embroidery-animate {
+
+		#embroidery-editor-button {
+			display: none;
+		}
+	}
+
+	&:not(.embroidery-animate) {
+
+		.embroidery-loader-wrapper {
+			display: none;
+		}
+	}
+}
+
+.embroidery-loader-wrapper {
+	margin: auto;
+	width: 80px;
+}
+
+.embroidery-loader {
+	height: 80px;
+	position: relative;
+}
+
+.embroidery-loading-title {
+	color: $editor-light;
+	text-transform: uppercase;
+	margin-top: 15px;
+	font-size: 11px;
+	letter-spacing: 5px;
+}
+
+// Tools
+.embroidery-button-spinner {
+	&:before {
+		font: normal 20px/.5 dashicons;
+		speak: none;
+		display: inline-block;
+		padding: 0;
+		top: 8px;
+		@include start(-4px);
+		position: relative;
+		vertical-align: top;
+		content: "\f463";
+	}
+
+	&.loading:before {
+		-webkit-animation: rotation 1s infinite linear;
+		animation: rotation 1s infinite linear;
+	}
+
+	&.success:before {
+		content: "\f147";
+		color: #46b450;
+	}
+}
+
+// Customizer widget icon
+#available-widgets [class*="embroidery-template"] .widget-title:before {
+	content: "\e801";
+	font-family: eicons;
+	font-size: 17px;
+}
+
+
+// Settings
+.embroidery-settings-form-page {
+	padding-top: 30px;
+
+	&:not(.embroidery-active) {
+		display: none;
+	}
+}
+
+._embroidery_settings_update_time {
+	display: none;
+}
+
+@import "message";
+@import "system_info";
+@import "feedback";
+@import "import-template";
+@import "maintenance-mode";
+@import "dashboard-widget";

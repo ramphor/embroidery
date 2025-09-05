@@ -1,0 +1,426 @@
+//
+// Panel Controls
+//
+
+.embroidery-control {
+	background-color: #fff;
+	position: relative;
+	padding: 0 20px 15px;
+
+	a {
+		font-weight: 500;
+		text-decoration: none;
+		border-bottom: 1px dotted transparent;
+		transition: all ease-in-out .3s;
+
+		&:hover {
+			border-bottom-color: inherit;
+		}
+	}
+
+	&.embroidery-control-separator- {
+
+		&default {
+
+			&:before {
+				content: '';
+				height: 1px;
+				display: block;
+				margin-bottom: 15px;
+				background-color: $editor-background;
+			}
+
+			// WP Widgets
+			&.embroidery-control-wp {
+				margin-top: 15px;
+
+				&:before {
+					background-color: transparent;
+				}
+			}
+		}
+
+		&before {
+			padding-top: 15px;
+
+			&:before {
+				content: '';
+				position: absolute;
+				height: 3px;
+				width: 100%;
+				top: 0;
+				left: 0;
+				background-color: $editor-lightest;
+			}
+		}
+
+		&after {
+
+			&:after {
+				content: '';
+				position: absolute;
+				height: 3px;
+				width: 100%;
+				bottom: 0;
+				left: 0;
+				background-color: $editor-lightest;
+			}
+
+			+ .embroidery-control-type-tabs {
+				padding-top: 15px;
+			}
+		}
+	}
+
+	&.embroidery-control-deprecated {
+		color: $editor-warning;
+
+		.embroidery-control-field-description {
+			color: $editor-warning;
+		}
+	}
+
+	&.embroidery-control-hidden-label {
+
+		> * > .embroidery-control-title, > * > * > .embroidery-control-title { // Avoid repeater titles to be affected from above
+			display: none;
+		}
+	}
+
+	&.embroidery-hidden-control {
+		display: none;
+	}
+
+	&.embroidery-control-type-heading {
+
+		.embroidery-control-title {
+			font-weight: bold;
+			margin: 0;
+		}
+	}
+
+	&.embroidery-control-responsive- {
+
+		&desktop {
+
+			body:not(.embroidery-device-desktop) & {
+				display: none;
+			}
+		}
+
+		&tablet {
+
+			body:not(.embroidery-device-tablet) & {
+				display: none;
+			}
+		}
+
+		&mobile {
+
+			body:not(.embroidery-device-mobile) & {
+				display: none;
+			}
+		}
+	}
+}
+
+// WP Widgets
+.embroidery-control-wp {
+	line-height: 1.5;
+
+	p {
+		margin: 15px 0;
+	}
+}
+
+.embroidery-control-field {
+	display: flex;
+	align-items: center;
+}
+
+.embroidery-label-block {
+
+	> .embroidery-control-content {
+
+		> .embroidery-control-field {
+			flex-wrap: wrap;
+
+			> .embroidery-control-input-wrapper {
+				flex-basis: 100%;
+				margin-top: 10px;
+			}
+		}
+	}
+
+	&.embroidery-control-hidden-label {
+
+		> .embroidery-control-content {
+
+			> .embroidery-control-field {
+
+				> .embroidery-control-input-wrapper {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+}
+
+.embroidery-label-inline {
+
+	> .embroidery-control-content {
+
+		> .embroidery-control-field {
+
+			> .embroidery-control-title {
+				width: 45%;
+				flex-shrink: 0;
+			}
+
+			> .embroidery-control-input-wrapper {
+				width: 55%;
+			}
+		}
+	}
+}
+
+.embroidery-control-field-description {
+	@extend .embroidery-descriptor;
+
+	margin-top: 10px;
+}
+
+.embroidery-required {
+	color: $editor-warning;
+}
+
+.embroidery-choices {
+	display: table;
+	width: 100%;
+	height: 27px;
+	background-color: $editor-light;
+	text-align: center;
+	border-spacing: 1px;
+	border-radius: 3px;
+
+	input {
+		display: none;
+
+		&:checked + .embroidery-choices-label {
+			color: #fff;
+		}
+
+		&:not(:checked) + .embroidery-choices-label {
+			background-color: #fff;
+			color: $editor-light;
+		}
+	}
+
+	.embroidery-choices-label {
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 12px;
+		transition: all .5s;
+		cursor: pointer;
+	}
+}
+
+.embroidery-slider {
+	display: inline-block;
+	margin-top: 10px;
+	height: 4px;
+	background-color: $editor-light;
+	border-radius: 5px;
+	position: relative;
+	width: 67%;
+
+	.ui-slider-handle {
+		height: 16px;
+		width: 16px;
+		background-color: #fff;
+		display: inline-block;
+		top: 50%;
+		transform: translateY(-50%) translateX(-8px);
+		position: absolute;
+		box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+		border-radius: 50%;
+		cursor: pointer;
+	}
+}
+
+.embroidery-slider-input {
+	width: 33%;
+	float: $end;
+
+	input {
+		width: 80%;
+		float: $end;
+	}
+}
+
+.embroidery-units-choices {
+	flex-grow: 1;
+	text-align: $end;
+
+	input {
+		display: none;
+
+		&:not(:checked) + label {
+			color: $editor-lighter;
+		}
+
+		&:checked + label {
+			text-decoration: underline;
+		}
+	}
+
+	label {
+		cursor: pointer;
+		padding: 0 2px;
+		text-transform: uppercase;
+		font-size: 9px;
+	}
+}
+
+@if $direction == rtl {
+
+	.embroidery-control-start-end {
+
+		.eicon-h-align-left, .eicon-h-align-right {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+.embroidery-control-responsive-switchers {
+	display: flex;
+	margin: 0 5px;
+}
+
+.embroidery-responsive-switcher {
+	$icon-size: 18px;
+
+	display: inline-block;
+	border-radius: 50%;
+	height: $icon-size;
+	width: $icon-size;
+	background-color: $editor-light;
+	cursor: pointer;
+	position: relative;
+	@include margin-start(5px);
+	color: #fff;
+	font-size: 8px;
+	text-align: center;
+	transition: background-color .5s;
+
+	&:hover {
+		background-color: $editor-lighter;
+	}
+
+	i {
+		position: relative;
+		display: block;
+		line-height: $icon-size;
+
+		&:before {
+			height: $icon-size;
+			width: $icon-size;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
+
+@at-root .embroidery-device-desktop #embroidery-panel .embroidery-panel-controls-stack:not(.embroidery-responsive-switchers-open) .embroidery-responsive-switcher {
+	background: $editor-lighter;
+
+	&:not(.embroidery-responsive-switcher-desktop) {
+		display: none;
+	}
+}
+
+.embroidery-responsive-switcher-mobile {
+
+	.embroidery-device-mobile & {
+		background-color: $editor-info;
+	}
+}
+
+.embroidery-responsive-switcher-tablet {
+
+	.embroidery-device-tablet & {
+		background-color: $editor-info;
+	}
+}
+
+.embroidery-update-preview {
+	margin: 15px 15px 0;
+	background-color: $editor-background;
+	display: flex;
+	align-items: center;
+}
+
+.embroidery-update-preview-button-wrapper {
+	flex-grow: 1;
+	text-align: $end;
+}
+
+.embroidery-update-preview-button {
+	padding: 8px 15px;
+	text-transform: uppercase;
+}
+
+// = Choices control for alignment
+.embroidery-control-text_align,
+.embroidery-control-align,
+.embroidery-control-position {
+
+	.embroidery-choices {
+		direction: ltr; // Force ltr also in RTL languages
+	}
+}
+
+@import "controls/media";
+
+@import "controls/dimensions";
+
+@import "controls/url";
+
+@import "controls/section";
+
+@import "controls/color";
+
+@import "controls/wysiwyg";
+
+@import "controls/icon";
+
+@import "controls/gallery";
+
+@import "controls/structure";
+
+@import "controls/image-dimensions";
+
+@import "controls/code";
+
+@import "controls/wp-widget";
+
+@import "controls/tabs";
+
+@import "controls/repeater";
+
+@import "controls/textarea";
+
+@import "controls/box-shadow";
+
+@import "controls/text-shadow";
+
+@import "controls/switcher";
+
+@import "controls/order";
+
+@import "controls/hidden";
+
+@import "controls/popover-toggle";
+
+@import "controls/button";

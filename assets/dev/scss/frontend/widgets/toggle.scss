@@ -1,0 +1,73 @@
+//
+// Toggle
+//
+
+.embroidery-toggle {
+	text-align: $start;
+
+	.embroidery-tab-title {
+		font-weight: bold;
+		line-height: 1;
+		margin: 0;
+		padding: 15px;
+		border-bottom: 1px solid $gray-light;
+		cursor: pointer;
+
+		.embroidery-toggle-icon {
+			display: inline-block;
+			width: 1em;
+
+			&.embroidery-toggle-icon- {
+
+				&right {
+					float: right;
+					text-align: right;
+				}
+
+				&left {
+					float: left;
+					text-align: left;
+				}
+			}
+
+			.embroidery-toggle-icon-closed {
+				display: block;
+			}
+			.embroidery-toggle-icon-opened {
+				display: none;
+			}
+		}
+
+		&.embroidery-active {
+			border-bottom: none;
+
+			.embroidery-toggle-icon-closed {
+				display: none;
+			}
+			.embroidery-toggle-icon-opened {
+				display: block;
+			}
+		}
+	}
+
+	.embroidery-tab-content {
+	    padding: 15px;
+		border-bottom: 1px solid $gray-light;
+	    display: none;
+	}
+}
+
+// Responsive mode
+@media (max-width: $screen-sm-max) {
+
+	.embroidery-toggle {
+
+		.embroidery-tab-title {
+			padding: 12px;
+		}
+
+		.embroidery-tab-content {
+			padding: 12px 10px;
+		}
+	}
+}

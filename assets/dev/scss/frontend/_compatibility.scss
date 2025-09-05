@@ -1,0 +1,14 @@
+// Canvas Page template
+.page-template-embroidery_canvas {
+
+	&.embroidery-page {
+
+		&:before {
+			display: none; // Twenty Fifteen Theme
+		}
+	}
+}
+
+.embroidery-post__thumbnail__link {
+	transition: none; // Avoid size calculation failures on some themes
+}

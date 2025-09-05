@@ -1,0 +1,77 @@
+//
+// testimonial
+//
+.embroidery-testimonial-wrapper {
+	overflow: hidden;
+	text-align: center;
+
+	.embroidery-testimonial-content {
+		font-size: 1.3em;
+		margin-bottom: 20px;
+	}
+
+	.embroidery-testimonial-name {
+		line-height: 1.5;
+	}
+
+	.embroidery-testimonial-job {
+		font-size: 0.85em;
+	}
+
+	&.embroidery-testimonial-text-align- {
+		&left {
+			text-align: left;
+		}
+
+		&right {
+			text-align: right;
+		}
+	}
+
+	.embroidery-testimonial-meta {
+		width: 100%;
+		line-height: 1;
+
+		&-inner {
+			display: inline-block;
+		}
+
+		.embroidery-testimonial-details,
+		.embroidery-testimonial-image {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.embroidery-testimonial-image {
+
+			img {
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+			}
+		}
+
+		&.embroidery-testimonial-image-position-aside {
+
+			.embroidery-testimonial-image {
+				@include padding-end(15px);
+			}
+
+			.embroidery-testimonial-details {
+				text-align: $start;
+			}
+		}
+
+		&.embroidery-testimonial-image-position-top {
+
+			.embroidery-testimonial-details,
+			.embroidery-testimonial-image {
+				display: block;
+			}
+
+			.embroidery-testimonial-image {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}

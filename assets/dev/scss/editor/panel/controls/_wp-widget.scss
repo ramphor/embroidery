@@ -1,0 +1,12 @@
+.embroidery-control-type-wp_widget {
+	.widget-inside {
+		// Overwrite WP Default
+		display: block;
+	}
+
+	.quicktags-toolbar {
+		input {
+			width: auto;
+		}
+	}
+}

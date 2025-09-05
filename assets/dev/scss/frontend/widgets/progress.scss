@@ -1,0 +1,87 @@
+//
+// Progress Bar
+//
+
+.embroidery-widget-progress {
+	text-align: $start;
+}
+
+.embroidery-progress-wrapper {
+	position: relative;
+	background-color: $progress-bg;
+	color: $progress-text;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 2px;
+}
+
+.embroidery-progress-bar {
+	display: flex;
+	background-color: $gray;
+	width: 0;
+	font-size: 11px;
+	border-radius: 2px;
+	transition: width 1s ease-in-out;
+}
+
+.embroidery-progress-text {
+	flex-grow: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	@include padding-start(15px);
+}
+
+.embroidery-progress-percentage {
+	@include padding-end(15px);
+}
+
+.embroidery-widget-progress {
+	.embroidery-progress-wrapper {
+
+		&.progress-info {
+
+			.embroidery-progress-bar {
+				background-color: $info;
+			}
+		}
+
+		&.progress-success {
+
+			.embroidery-progress-bar {
+				background-color: $success;
+			}
+		}
+
+		&.progress-warning {
+
+			.embroidery-progress-bar {
+				background-color: $warning;
+			}
+		}
+
+		&.progress-danger {
+
+			.embroidery-progress-bar {
+				background-color: $danger;
+			}
+		}
+	}
+}
+
+.embroidery-progress .embroidery-title {
+	display: block;
+}
+
+// Responsive mode
+@media (max-width: $screen-sm-max) {
+
+	.embroidery-progress-wrapper {
+		height: 25px;
+		line-height: 25px;
+	}
+
+	.embroidery-progress-text {
+		@include padding-start(10px);
+	}
+}

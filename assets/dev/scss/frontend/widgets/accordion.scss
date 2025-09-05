@@ -1,0 +1,84 @@
+//
+// Accordion
+//
+
+.embroidery-accordion {
+	text-align: $start;
+
+	.embroidery-accordion-item {
+		border: 1px solid $gray-light;
+
+		+ .embroidery-accordion-item {
+			border-top: none;
+		}
+	}
+
+	.embroidery-tab-title {
+		margin: 0;
+		padding: 15px 20px;
+		font-weight: bold;
+		line-height: 1;
+		cursor: pointer;
+
+		.embroidery-accordion-icon {
+			display: inline-block;
+			width: 1.5em;
+
+			&.embroidery-accordion-icon- {
+
+				&right {
+					float: right;
+					text-align: right;
+				}
+
+				&left {
+					float: left;
+					text-align: left;
+				}
+			}
+
+			.embroidery-accordion-icon-closed {
+				display: block;
+			}
+			.embroidery-accordion-icon-opened {
+				display: none;
+			}
+		}
+
+		&.embroidery-active {
+
+			.embroidery-accordion-icon-closed {
+				display: none;
+			}
+			.embroidery-accordion-icon-opened {
+				display: block;
+			}
+		}
+	}
+
+	.embroidery-tab-content {
+		display: none;
+		padding: 15px 20px;
+		border-top: 1px solid $gray-light;
+	}
+
+}
+
+// Responsive mode
+@media (max-width: $screen-sm-max) {
+
+	.embroidery-accordion {
+
+		.embroidery-tab-title {
+			padding: 12px 15px;
+
+			.embroidery-accordion-icon {
+				width: 1.2em;
+			}
+		}
+
+		.embroidery-tab-content {
+			padding: 7px 15px;
+		}
+	}
+}

@@ -1,0 +1,68 @@
+//
+// Alert
+//
+.embroidery-alert {
+	padding: 15px;
+	border-left: 5px solid transparent;
+	position: relative;
+	text-align: $start;
+
+	.embroidery-alert-title {
+		display: block;
+		font-weight: bold;
+	}
+
+	.embroidery-alert-description {
+		font-size: 13px;
+	}
+
+	button.embroidery-alert-dismiss {
+		position: absolute;
+		@include end(10px);
+		top: 10px;
+		padding: 3px;
+		font-size: 20px;
+		line-height: 1;
+		background: transparent;
+		color: inherit;
+		border: none;
+		cursor: pointer;
+	}
+
+	&.embroidery-alert-info {
+		color: $info-text;
+		background-color: $info-bg;
+		border-color: $info-border;
+	}
+
+	&.embroidery-alert-success {
+		color: $success-text;
+		background-color: $success-bg;
+		border-color: $success-border;
+	}
+
+	&.embroidery-alert-warning {
+		color: $warning-text;
+		background-color: $warning-bg;
+		border-color: $warning-border;
+	}
+
+	&.embroidery-alert-danger {
+		color: $danger-text;
+		background-color: $danger-bg;
+		border-color: $danger-border;
+	}
+}
+
+// Responsive mode
+@media (max-width: $screen-sm-max) {
+
+	.embroidery-alert {
+		padding: 10px;
+
+		button.embroidery-alert-dismiss {
+			right: 7px;
+			top: 7px;
+		}
+	}
+}

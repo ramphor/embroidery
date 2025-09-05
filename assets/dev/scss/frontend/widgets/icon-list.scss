@@ -1,0 +1,216 @@
+//
+// Icon List
+//
+.embroidery-widget-icon-list {
+
+	&.embroidery-align-center {
+
+		.embroidery-icon-list-item {
+
+			&, a {
+				justify-content: center;
+			}
+
+			&:after {
+				margin: auto;
+			}
+		}
+	}
+
+	&.embroidery-align-left {
+
+		.embroidery-icon-list-item {
+
+			&, a {
+				justify-content: flex-start;
+				text-align: $start;
+			}
+		}
+	}
+
+	&.embroidery-align-right {
+
+		.embroidery-icon-list-item {
+
+			&, a {
+				justify-content: flex-end;
+				text-align: $end;
+			}
+		}
+	}
+
+	&:not(.embroidery-align-right) {
+
+		.embroidery-icon-list-item {
+
+			&:after {
+				@include start(0);
+			}
+		}
+	}
+
+	&:not(.embroidery-align-left) {
+
+		.embroidery-icon-list-item {
+
+			&:after {
+				@include end(0);
+			}
+		}
+	}
+
+	@media (max-width: $screen-md-max) {
+		&.embroidery-tablet-align-center {
+
+			.embroidery-icon-list-item {
+
+				&, a {
+					justify-content: center;
+				}
+
+				&:after {
+					margin: auto;
+				}
+			}
+		}
+
+		&.embroidery-tablet-align-left {
+
+			.embroidery-icon-list-item {
+
+				&, a {
+					justify-content: flex-start;
+					text-align: $start;
+				}
+			}
+		}
+
+		&.embroidery-tablet-align-right {
+
+			.embroidery-icon-list-item {
+
+				&, a {
+					justify-content: flex-end;
+					text-align: $end;
+				}
+			}
+		}
+
+		&:not(.embroidery-tablet-align-right) {
+
+			.embroidery-icon-list-item {
+
+				&:after {
+					@include start(0);
+				}
+			}
+		}
+
+		&:not(.embroidery-tablet-align-left) {
+
+			.embroidery-icon-list-item {
+
+				&:after {
+					@include end(0);
+				}
+			}
+		}
+	}
+
+	@media (max-width: $screen-sm-max) {
+		&.embroidery-mobile-align-center {
+
+			.embroidery-icon-list-item {
+
+				&, a {
+					justify-content: center;
+				}
+
+				&:after {
+					margin: auto;
+				}
+			}
+		}
+
+		&.embroidery-mobile-align-left {
+
+			.embroidery-icon-list-item {
+
+				&, a {
+					justify-content: flex-start;
+					text-align: $start;
+				}
+			}
+		}
+
+		&.embroidery-mobile-align-right {
+
+			.embroidery-icon-list-item {
+
+				&, a {
+					justify-content: flex-end;
+					text-align: $end;
+				}
+			}
+		}
+
+		&:not(.embroidery-mobile-align-right) {
+
+			.embroidery-icon-list-item {
+
+				&:after {
+					@include start(0);
+				}
+			}
+		}
+
+		&:not(.embroidery-mobile-align-left) {
+
+			.embroidery-icon-list-item {
+
+				&:after {
+					@include end(0);
+				}
+			}
+		}
+	}
+
+	.embroidery-icon-list-items {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.embroidery-icon-list-item {
+		margin: 0;
+		padding: 0;
+		position: relative;
+
+		&:after {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+		}
+
+		&, a {
+			display: flex;
+		}
+
+		a {
+			width: 100%;
+		}
+	}
+
+	.embroidery-icon-list-text {
+		align-self: center;
+		@include padding-start(5px);
+	}
+
+	.embroidery-icon-list-icon {
+		text-align: center;
+
+		i {
+			vertical-align: middle;
+		}
+	}
+}

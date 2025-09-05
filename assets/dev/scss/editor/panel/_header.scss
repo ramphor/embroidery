@@ -1,0 +1,48 @@
+//
+// Panel Header
+//
+
+#embroidery-panel-header {
+    display: table;
+    height: 40px;
+    width: 100%;
+	background-color: $editor-accent;
+	color: #fff;
+
+    > * {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+    }
+
+
+}
+
+.embroidery-header-button {
+	width: 40px;
+
+	.embroidery-icon {
+		cursor: pointer;
+		display: block;
+		font-size: 19px;
+		height: 40px;
+		line-height: 40px;
+		transition: $transition-hover;
+
+		&.eicon-menu-bar {
+			font-size: 18px;
+		}
+
+		&:hover {
+			color: $editor-lightest;
+		}
+	}
+}
+
+#embroidery-panel-header-title {
+	font-size: 15px;
+
+	img {
+		width: 66px;
+	}
+}

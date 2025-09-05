@@ -1,0 +1,502 @@
+/*!
+ * Hover.css (http://ianlunn.github.io/Hover/)
+ * Version: 2.0.2
+ * Author: Ian Lunn @IanLunn
+ * Author URL: http://ianlunn.co.uk/
+ * Github: https://github.com/IanLunn/Hover
+
+ * Made available under a MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+
+ * Hover.css Copyright Ian Lunn 2014. Generated with Sass.
+ */
+/* 2D TRANSITIONS */
+/* Grow */
+.embroidery-animation-grow {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.embroidery-animation-grow:hover, .embroidery-animation-grow:focus, .embroidery-animation-grow:active {
+  transform: scale(1.1);
+}
+
+/* Shrink */
+.embroidery-animation-shrink {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.embroidery-animation-shrink:hover, .embroidery-animation-shrink:focus, .embroidery-animation-shrink:active {
+  transform: scale(0.9);
+}
+
+/* Pulse */
+@keyframes embroidery-animation-pulse {
+  25% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+}
+.embroidery-animation-pulse:hover, .embroidery-animation-pulse:focus, .embroidery-animation-pulse:active {
+  animation-name: embroidery-animation-pulse;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Pulse Grow */
+@keyframes embroidery-animation-pulse-grow {
+  to {
+    transform: scale(1.1);
+  }
+}
+.embroidery-animation-pulse-grow:hover, .embroidery-animation-pulse-grow:focus, .embroidery-animation-pulse-grow:active {
+  animation-name: embroidery-animation-pulse-grow;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* Pulse Shrink */
+@keyframes embroidery-animation-pulse-shrink {
+  to {
+    transform: scale(0.9);
+  }
+}
+.embroidery-animation-pulse-shrink:hover, .embroidery-animation-pulse-shrink:focus, .embroidery-animation-pulse-shrink:active {
+  animation-name: embroidery-animation-pulse-shrink;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* Push */
+@keyframes embroidery-animation-push {
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.embroidery-animation-push:hover, .embroidery-animation-push:focus, .embroidery-animation-push:active {
+  animation-name: embroidery-animation-push;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+/* Pop */
+@keyframes embroidery-animation-pop {
+  50% {
+    transform: scale(1.2);
+  }
+}
+.embroidery-animation-pop:hover, .embroidery-animation-pop:focus, .embroidery-animation-pop:active {
+  animation-name: embroidery-animation-pop;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+/* Bounce In */
+.embroidery-animation-bounce-in {
+  transition-duration: 0.5s;
+}
+.embroidery-animation-bounce-in:hover, .embroidery-animation-bounce-in:focus, .embroidery-animation-bounce-in:active {
+  transform: scale(1.2);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+/* Bounce Out */
+.embroidery-animation-bounce-out {
+  transition-duration: 0.5s;
+}
+.embroidery-animation-bounce-out:hover, .embroidery-animation-bounce-out:focus, .embroidery-animation-bounce-out:active {
+  transform: scale(0.8);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+/* Rotate */
+.embroidery-animation-rotate {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.embroidery-animation-rotate:hover, .embroidery-animation-rotate:focus, .embroidery-animation-rotate:active {
+  transform: rotate(4deg);
+}
+
+/* Grow Rotate */
+.embroidery-animation-grow-rotate {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.embroidery-animation-grow-rotate:hover, .embroidery-animation-grow-rotate:focus, .embroidery-animation-grow-rotate:active {
+  transform: scale(1.1) rotate(4deg);
+}
+
+/* Float */
+.embroidery-animation-float {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+}
+.embroidery-animation-float:hover, .embroidery-animation-float:focus, .embroidery-animation-float:active {
+  transform: translateY(-8px);
+}
+
+/* Sink */
+.embroidery-animation-sink {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+}
+.embroidery-animation-sink:hover, .embroidery-animation-sink:focus, .embroidery-animation-sink:active {
+  transform: translateY(8px);
+}
+
+/* Bob */
+@keyframes embroidery-animation-bob {
+  0% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes embroidery-animation-bob-float {
+  100% {
+    transform: translateY(-8px);
+  }
+}
+.embroidery-animation-bob:hover, .embroidery-animation-bob:focus, .embroidery-animation-bob:active {
+  animation-name: embroidery-animation-bob-float, embroidery-animation-bob;
+  animation-duration: .3s, 1.5s;
+  animation-delay: 0s, .3s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal, alternate;
+}
+
+/* Hang */
+@keyframes embroidery-animation-hang {
+  0% {
+    transform: translateY(8px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(8px);
+  }
+}
+@keyframes embroidery-animation-hang-sink {
+  100% {
+    transform: translateY(8px);
+  }
+}
+.embroidery-animation-hang:hover, .embroidery-animation-hang:focus, .embroidery-animation-hang:active {
+  animation-name: embroidery-animation-hang-sink, embroidery-animation-hang;
+  animation-duration: .3s, 1.5s;
+  animation-delay: 0s, .3s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal, alternate;
+}
+
+/* Skew */
+.embroidery-animation-skew {
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+.embroidery-animation-skew:hover, .embroidery-animation-skew:focus, .embroidery-animation-skew:active {
+  transform: skew(-10deg);
+}
+
+/* Skew Forward */
+.embroidery-animation-skew-forward {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform-origin: 0 100%;
+}
+.embroidery-animation-skew-forward:hover, .embroidery-animation-skew-forward:focus, .embroidery-animation-skew-forward:active {
+  transform: skew(-10deg);
+}
+
+/* Skew Backward */
+.embroidery-animation-skew-backward {
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform-origin: 0 100%;
+}
+.embroidery-animation-skew-backward:hover, .embroidery-animation-skew-backward:focus, .embroidery-animation-skew-backward:active {
+  transform: skew(10deg);
+}
+
+/* Wobble Vertical */
+@keyframes embroidery-animation-wobble-vertical {
+  16.65% {
+    transform: translateY(8px);
+  }
+  33.3% {
+    transform: translateY(-6px);
+  }
+  49.95% {
+    transform: translateY(4px);
+  }
+  66.6% {
+    transform: translateY(-2px);
+  }
+  83.25% {
+    transform: translateY(1px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.embroidery-animation-wobble-vertical:hover, .embroidery-animation-wobble-vertical:focus, .embroidery-animation-wobble-vertical:active {
+  animation-name: embroidery-animation-wobble-vertical;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Wobble Horizontal */
+@keyframes embroidery-animation-wobble-horizontal {
+  16.65% {
+    transform: translateX(8px);
+  }
+  33.3% {
+    transform: translateX(-6px);
+  }
+  49.95% {
+    transform: translateX(4px);
+  }
+  66.6% {
+    transform: translateX(-2px);
+  }
+  83.25% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.embroidery-animation-wobble-horizontal:hover, .embroidery-animation-wobble-horizontal:focus, .embroidery-animation-wobble-horizontal:active {
+  animation-name: embroidery-animation-wobble-horizontal;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Wobble To Bottom Right */
+@keyframes embroidery-animation-wobble-to-bottom-right {
+  16.65% {
+    transform: translate(8px, 8px);
+  }
+  33.3% {
+    transform: translate(-6px, -6px);
+  }
+  49.95% {
+    transform: translate(4px, 4px);
+  }
+  66.6% {
+    transform: translate(-2px, -2px);
+  }
+  83.25% {
+    transform: translate(1px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.embroidery-animation-wobble-to-bottom-right:hover, .embroidery-animation-wobble-to-bottom-right:focus, .embroidery-animation-wobble-to-bottom-right:active {
+  animation-name: embroidery-animation-wobble-to-bottom-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Wobble To Top Right */
+@keyframes embroidery-animation-wobble-to-top-right {
+  16.65% {
+    transform: translate(8px, -8px);
+  }
+  33.3% {
+    transform: translate(-6px, 6px);
+  }
+  49.95% {
+    transform: translate(4px, -4px);
+  }
+  66.6% {
+    transform: translate(-2px, 2px);
+  }
+  83.25% {
+    transform: translate(1px, -1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.embroidery-animation-wobble-to-top-right:hover, .embroidery-animation-wobble-to-top-right:focus, .embroidery-animation-wobble-to-top-right:active {
+  animation-name: embroidery-animation-wobble-to-top-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Wobble Top */
+@keyframes embroidery-animation-wobble-top {
+  16.65% {
+    transform: skew(-12deg);
+  }
+  33.3% {
+    transform: skew(10deg);
+  }
+  49.95% {
+    transform: skew(-6deg);
+  }
+  66.6% {
+    transform: skew(4deg);
+  }
+  83.25% {
+    transform: skew(-2deg);
+  }
+  100% {
+    transform: skew(0);
+  }
+}
+.embroidery-animation-wobble-top {
+  transform-origin: 0 100%;
+}
+.embroidery-animation-wobble-top:hover, .embroidery-animation-wobble-top:focus, .embroidery-animation-wobble-top:active {
+  animation-name: embroidery-animation-wobble-top;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Wobble Bottom */
+@keyframes embroidery-animation-wobble-bottom {
+  16.65% {
+    transform: skew(-12deg);
+  }
+  33.3% {
+    transform: skew(10deg);
+  }
+  49.95% {
+    transform: skew(-6deg);
+  }
+  66.6% {
+    transform: skew(4deg);
+  }
+  83.25% {
+    transform: skew(-2deg);
+  }
+  100% {
+    transform: skew(0);
+  }
+}
+.embroidery-animation-wobble-bottom {
+  transform-origin: 100% 0;
+}
+.embroidery-animation-wobble-bottom:hover, .embroidery-animation-wobble-bottom:focus, .embroidery-animation-wobble-bottom:active {
+  animation-name: embroidery-animation-wobble-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Wobble Skew */
+@keyframes embroidery-animation-wobble-skew {
+  16.65% {
+    transform: skew(-12deg);
+  }
+  33.3% {
+    transform: skew(10deg);
+  }
+  49.95% {
+    transform: skew(-6deg);
+  }
+  66.6% {
+    transform: skew(4deg);
+  }
+  83.25% {
+    transform: skew(-2deg);
+  }
+  100% {
+    transform: skew(0);
+  }
+}
+.embroidery-animation-wobble-skew:hover, .embroidery-animation-wobble-skew:focus, .embroidery-animation-wobble-skew:active {
+  animation-name: embroidery-animation-wobble-skew;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+/* Buzz */
+@keyframes embroidery-animation-buzz {
+  50% {
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+.embroidery-animation-buzz:hover, .embroidery-animation-buzz:focus, .embroidery-animation-buzz:active {
+  animation-name: embroidery-animation-buzz;
+  animation-duration: 0.15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Buzz Out */
+@keyframes embroidery-animation-buzz-out {
+  10% {
+    transform: translateX(3px) rotate(2deg);
+  }
+  20% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  30% {
+    transform: translateX(3px) rotate(2deg);
+  }
+  40% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(2px) rotate(1deg);
+  }
+  60% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  70% {
+    transform: translateX(2px) rotate(1deg);
+  }
+  80% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  90% {
+    transform: translateX(1px) rotate(0);
+  }
+  100% {
+    transform: translateX(-1px) rotate(0);
+  }
+}
+.embroidery-animation-buzz-out:hover, .embroidery-animation-buzz-out:focus, .embroidery-animation-buzz-out:active {
+  animation-name: embroidery-animation-buzz-out;
+  animation-duration: 0.75s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+/*# sourceMappingURL=hover.css.map */

@@ -1,0 +1,795 @@
+//
+// Editor
+//
+@import "../helpers/variables";
+@import "../helpers/mixins";
+@import "inline-editor";
+@import "animations";
+@import "compatibility";
+
+// Hidden WP Admin Bar
+html.embroidery-html {
+	margin-top: 0 !important;
+}
+
+#embroidery {
+	position: relative;
+}
+
+.embroidery-editor-active {
+
+	.embroidery-inner {
+		margin-top: 25px;
+	}
+
+	.embroidery.embroidery-edit-mode {
+
+		.embroidery-element-empty {
+
+			.embroidery-sortable-placeholder {
+				display: none;
+			}
+		}
+
+		.embroidery-empty-view {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: $first-layer;
+		}
+
+		.embroidery-first-add {
+			text-align: center;
+			border: 1px dashed $editor-lightest;
+			display: flex;
+			height: 100%;
+			align-items: center;
+			justify-content: center;
+
+			.embroidery-icon {
+				font-size: 19px;
+				color: $editor-light;
+				cursor: pointer;
+			}
+		}
+
+		.embroidery-element {
+
+			> .embroidery-element-overlay {
+				position: absolute;
+				top: 0;
+				@include end(0);
+				letter-spacing: 0; // Hack for front-end style themes
+				z-index: $element-overlay;
+				pointer-events: none;
+			}
+
+			&.embroidery-widget-empty {
+				background-color: fade_out($editor-lightest, .2);
+
+				.embroidery-widget-empty-icon {
+					color: $editor-lighter;
+					font-size: 22px;
+					display: block;
+					text-align: center;
+					padding: 10px 0;
+				}
+			}
+
+			&:not(:hover) {
+
+				&:not(.embroidery-element-editable) {
+
+					> .embroidery-element-overlay {
+
+						.embroidery-editor-element-settings {
+							display: none;
+						}
+					}
+				}
+			}
+
+			&[data-side="top"], &[data-side="bottom"] + .embroidery-element {
+
+				&:before {
+					content: '';
+					background-color: $editor-info;
+					transition-timing-function: ease-out;
+					opacity: .9;
+					height: $widget-placeholder-size;
+					animation: placeholder-widget 500ms;
+					display: block;
+				}
+			}
+
+			&[data-side="bottom"]:last-child {
+
+				&:after {
+					content: '';
+					background-color: $editor-info;
+					transition-timing-function: ease-out;
+					opacity: .9;
+					height: $widget-placeholder-size;
+					animation: placeholder-widget 500ms;
+					display: block;
+				}
+			}
+		}
+
+		// Section
+		.embroidery-section {
+
+			> .embroidery-element-overlay {
+				@include start(0);
+				bottom: 0;
+
+				&:after {
+					position: absolute;
+					left: 2px;
+					right: 2px;
+					top: 2px;
+					bottom: 2px;
+					outline: 2px solid $editor-info;
+					animation: section-outline .75s;
+				}
+			}
+
+			&:hover,
+			&.embroidery-element-editable {
+
+				> .embroidery-element-overlay {
+
+					&:after {
+						content: '';
+					}
+				}
+			}
+		}
+
+		.embroidery-top-section {
+
+			> .embroidery-container {
+
+				> .embroidery-row {
+					min-height: 80px;
+				}
+			}
+		}
+
+		.embroidery-inner-section {
+
+			&:first-child {
+				margin-top: 15px;
+			}
+
+			> .embroidery-container {
+
+				> .embroidery-row {
+					min-height: 40px;
+				}
+			}
+		}
+
+		// General - Overlay Settings
+		.embroidery-editor-element-settings {
+			position: absolute;
+			overflow: hidden;
+			display: flex;
+			height: 26px;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 13px;
+			font-weight: normal;
+			font-style: normal;
+			line-height: 1;
+			z-index: $first-layer;
+			pointer-events: all;
+
+			.embroidery-editor-element-trigger {
+
+				&.embroidery-active {
+
+					~ .embroidery-editor-element-setting {
+						@include margin-start(0)
+					}
+				}
+
+				&:not(.embroidery-active) {
+
+					~ .embroidery-editor-element-setting {
+						width: 0;
+						font-size: 0;
+						padding: 0;
+					}
+				}
+			}
+
+			.embroidery-editor-element-remove {
+
+				&:hover {
+
+					.fa {
+						color: $editor-danger;
+					}
+				}
+			}
+		}
+
+		.embroidery-editor-element-setting {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			margin: 0;
+			font-size: 11px;
+			color: #fff;
+			width: 25px;
+			transition: margin .3s, width .3s, font .3s;
+			box-sizing: content-box;
+		}
+
+		.embroidery-editor-section-settings {
+			top: 1px;
+			@include start(50%);
+			background-image: linear-gradient(to bottom, darken($editor-info, 10%), $editor-info);
+			border-radius: 3px 3px 0 0;
+			transform: translateX(getValueByDirection(-50%, 50%)) translateY(-100%);
+
+			.embroidery-editor-element-setting {
+
+				&:hover {
+					background-color: darken($editor-info, 20%);
+				}
+
+				@media (min-width: $screen-lg-min) {
+
+					&:first-child {
+						@include padding-start(1px);
+
+						&:not(.embroidery-active) {
+							@include padding-end(1px);
+						}
+					}
+
+					&:last-child {
+						@include padding-end(1px);
+					}
+				}
+			}
+		}
+
+		// Column - Overlay Settings
+		.embroidery-editor-column-settings {
+			top: -1px;
+			@include start(-1px);
+			border-radius: getValueByDirection(0 0 3px 0, 0 3px 0 0);
+			background-image: linear-gradient(to bottom, $editor-dark, $editor-darker);
+
+			.embroidery-editor-element-setting {
+
+				&:hover {
+					background-color: $editor-darkest;
+				}
+
+				@media (min-width: $screen-lg-min) {
+
+					&:first-child {
+						@include padding-start(1px);
+
+						&:not(.embroidery-active) {
+							@include padding-end(1px);
+						}
+					}
+
+					&:last-child {
+						@include padding-end(1px);
+					}
+				}
+			}
+		}
+
+		// Widget - Overlay Settings
+		.embroidery-editor-widget-settings {
+			z-index: $second-layer;
+			top: -1px;
+			@include end(-1px);
+			background-image: linear-gradient(to top, darken($editor-info, 10%), $editor-info);
+			border-radius: getValueByDirection(0 0 0 3px, 0 0 3px 0);
+			flex-direction: row-reverse;
+
+			.embroidery-editor-element-setting {
+
+				&:hover {
+					background-color: darken($editor-info, 20%);
+				}
+
+				@media (min-width: $screen-lg-min) {
+
+					&:first-child {
+						@include padding-end(1px);
+
+						&:not(.embroidery-active) {
+							@include padding-start(1px);
+						}
+					}
+
+					&:last-child {
+						@include padding-start(1px);
+					}
+				}
+			}
+		}
+
+		.embroidery-editor-element-trigger {
+
+			@media(min-width: $screen-lg-min) {
+				cursor: move;
+			}
+		}
+
+		.embroidery-editor-element-setting {
+
+			&:not(.embroidery-editor-element-trigger) {
+
+				@media (max-width: $screen-md-max) {
+					display: none;
+				}
+			}
+		}
+
+		// Section Full (No more columns) - Overlay
+		.embroidery-section-filled {
+
+			.embroidery-editor-column-settings {
+
+				.embroidery-editor-element-add, .embroidery-editor-element-duplicate {
+					display: none;
+				}
+			}
+
+			.embroidery-sortable-placeholder {
+
+				&.embroidery-column {
+					display: none;
+				}
+			}
+
+			.embroidery-row {
+
+				&.embroidery-draggable-over {
+					border: 1px solid $editor-danger;
+				}
+			}
+		}
+
+		// Column
+		.embroidery-column {
+
+			> .embroidery-element-overlay {
+				@include start(0);
+				bottom: 0;
+
+				&:after {
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					outline: 1px dashed $editor-dark;
+				}
+			}
+
+			&:hover,
+			&.embroidery-element-editable {
+
+				> .embroidery-element-overlay {
+					border: 1px solid $white;
+
+					&:after {
+						content: '';
+					}
+				}
+			}
+
+			&.embroidery-dragging-on-child {
+
+				> .embroidery-element-overlay {
+					border: 1px solid $editor-info;
+
+					&:after {
+						display: none;
+					}
+				}
+			}
+
+			> .ui-resizable-e, > .ui-resizable-w {
+				cursor: col-resize;
+				width: 7px;
+				position: absolute;
+				@include end(-5px);
+				top: 0;
+				height: 100%;
+			}
+
+			&:last-of-type {
+				> .ui-resizable-e, > .ui-resizable-w {
+					display: none !important;
+				}
+			}
+
+			@media (max-width: $screen-md-max) {
+				> .ui-resizable-e, > .ui-resizable-w {
+					display: none !important;
+				}
+			}
+		}
+	}
+
+	.embroidery-column-wrap {
+
+		&.embroidery-element-empty {
+
+			.embroidery-widget-wrap {
+				min-height: 60px; // In case of section with not-default content position
+
+				@media (min-width: $screen-md-min) {
+					margin: 10px;
+				}
+			}
+		}
+	}
+
+	.embroidery-widget {
+
+		&.embroidery-loading {
+			opacity: .3;
+		}
+
+		&:not(.embroidery-loading):not(.embroidery-widget-menu-anchor) { // Don't apply transition on anchor widget - Safari hack
+			transition: all .1s;
+		}
+
+		&.embroidery-element-editable, &.embroidery-widget-can-edit:hover {
+			outline: 1px solid $editor-info;
+		}
+
+		&:not(:hover) {
+
+			.embroidery-editor-element-settings {
+				display: none;
+			}
+		}
+	}
+
+	.handle {
+		display: none; //TEMP
+	}
+
+	.embroidery-sortable-helper {
+		position: absolute;
+		border-radius: 3px;
+		background-color: #fff;
+		text-align: center;
+		color: $editor-darker;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+		cursor: move;
+
+		.icon {
+			font-size: 28px;
+			padding-top: 15px;
+			line-height: 1;
+		}
+
+		.embroidery-element-title-wrapper {
+			display: table;
+			width: 100%;
+		}
+
+		.title {
+			font-size: 11px;
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight: normal;
+			font-style: normal;
+			display: table-cell;
+			vertical-align: middle;
+			height: 40px;
+		}
+	}
+
+	.embroidery-inline-editing {
+		min-height: 15px;
+	}
+}
+
+// Drag/sort placeholder
+
+.embroidery-sortable-placeholder {
+
+	&:not(.embroidery-column-placeholder) {
+		background-color: $editor-info;
+		animation-timing-function: ease-out;
+		animation-duration: 500ms;
+		opacity: .9;
+	}
+}
+
+.embroidery-section-placeholder {
+	height: $section-placeholder-size;
+	animation-name: placeholder-section;
+}
+
+.embroidery-column-placeholder {
+	position: relative;
+
+	&:before, &:after {
+		content: '';
+		position: absolute;
+		top: 10px;
+		bottom: 10px;
+		right: 10px;
+		left: 10px;
+	}
+
+	&:before {
+		border: 1px solid $editor-dark;
+	}
+
+	&:after {
+		border: 1px dashed #fff;
+	}
+}
+
+.embroidery-widget-placeholder {
+	height: $widget-placeholder-size;
+	animation-name: placeholder-widget;
+}
+
+.embroidery-draggable-over:not([data-dragged-element="section"]):not([data-dragged-is-inner="true"]) > .embroidery-empty-view > .embroidery-first-add,
+.embroidery-first-add.embroidery-html5dnd-current-element {
+
+	&:after {
+		content: '';
+		background-color: $editor-info;
+		transition-timing-function: ease-out;
+		opacity: .9;
+		height: $widget-placeholder-size;
+		animation: placeholder-widget 500ms;
+		width: 100%;
+	}
+
+	.embroidery-icon {
+		display: none;
+	}
+}
+
+.embroidery-draggable-over[data-dragged-element="section"][data-dragged-is-inner="true"] {
+
+	.embroidery-inner-column {
+
+		.embroidery-sortable-placeholder {
+			display: none;
+		}
+	}
+}
+
+// Add new Section
+.embroidery-add-section {
+	background-color: rgba(255, 255, 255, .5);
+	max-width: 1140px;
+	position: relative;
+
+	&:not(.embroidery-dragging-on-child) {
+		border: 2px dashed $editor-lightest;
+	}
+
+	&.embroidery-dragging-on-child {
+		border: 3px dashed $editor-info;
+	}
+
+	&[data-view="choose-action"] {
+
+		.embroidery-select-preset {
+			display: none;
+		}
+	}
+
+	&[data-view="select-preset"] {
+
+		.embroidery-add-new-section {
+			display: none;
+		}
+	}
+
+	@media (max-width: $screen-xs-max) {
+		display: none;
+	}
+}
+
+.embroidery-add-section-inner {
+	text-align: center;
+	margin-top: 10px;
+	padding: 40px 0;
+}
+
+.embroidery-add-new-section {
+	display: inline-block; // For smooth dragging above
+
+	.embroidery-button {
+		color: #fff;
+		background-image: none; // Reset for some themes
+		font-size: 13px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight: normal;
+		font-style: normal;
+		text-transform: uppercase;
+		line-height: 1;
+		height: 40px;
+		min-width: 170px;
+		padding: 0 20px;
+		border: none;
+		border-radius: 3px;
+		cursor: pointer;
+
+		&:hover {
+			opacity: 0.85;
+			box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+		}
+
+		&:active {
+			box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .1);
+		}
+	}
+
+	.embroidery-add-section-button {
+		background-color: $editor-accent;
+	}
+
+	.embroidery-add-template-button {
+		background-color: $editor-dark;
+		@include margin-start(25px);
+	}
+}
+
+.embroidery-add-section-drag-title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	font-style: italic;
+	line-height: 1;
+	color: $editor-darker;
+	margin-top: 15px;
+}
+
+.embroidery-add-section-close {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	font-size: 20px;
+	cursor: pointer;
+	line-height: 1;
+	color: $editor-lightest;
+
+	&:hover {
+		color: $editor-dark;
+	}
+}
+
+.embroidery-select-preset-title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: 500;
+	font-style: normal;
+	text-transform: uppercase;
+	color: $editor-darker;
+}
+
+.embroidery-select-preset-list {
+	list-style: none;
+	padding: 0 25px;
+	margin: 20px auto 0;
+	overflow: hidden;
+	max-width: 700px;
+
+	.embroidery-preset {
+		cursor: pointer;
+		margin: 0;
+		padding: 10px;
+		float: $start;
+
+		&:hover {
+
+			path {
+				fill: $editor-dark;
+			}
+		}
+
+		&:not(:hover) {
+
+			path {
+				fill: $editor-lightest;
+			}
+		}
+
+		svg {
+			height: 50px;
+		}
+	}
+}
+
+#embroidery-add-new-section {
+	margin: 60px auto;
+
+	&[data-view="choose-action"] {
+
+		.embroidery-add-section-close {
+			display: none;
+		}
+	}
+}
+
+.embroidery-add-section-inline {
+	margin: 10px auto;
+}
+
+.embroidery-column-percents-tooltip {
+	position: absolute;
+	display: none;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #fff;
+	font-size: 10px;
+	background-color: $editor-darker;
+	width: 40px;
+	padding: 3.5px 0;
+	text-align: center;
+	z-index: 1;
+	line-height: 1;
+
+	&:after {
+		content: '';
+		position: absolute;
+		width:0;
+		height:0;
+		border: 8.5px solid transparent;
+		top: 0;
+	}
+
+	&[data-side="left"] {
+		border-radius: 3px 0 0 3px;
+		right: 15px;
+
+		&:after {
+			left: 100%;
+			border-left-color: $editor-darker;
+			border-right-width: 0;
+		}
+	}
+
+	&[data-side="right"] {
+		border-radius: 0 3px 3px 0;
+		left: 15px;
+
+		&:after {
+			right: 100%;
+			border-right-color: $editor-darker;
+			border-left-width: 0;
+		}
+	}
+}
+
+// Preview Mode
+.embroidery-editor-preview {
+
+	.embroidery-element-overlay,
+	.embroidery-empty,
+	.embroidery-add-section,
+	.embroidery-element-empty,
+	.embroidery-widget-empty {
+		display: none;
+	}
+}

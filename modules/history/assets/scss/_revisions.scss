@@ -1,0 +1,83 @@
+.embroidery-revision- {
+
+	&item {
+		&__wrapper {
+			display: flex;
+			align-items: center;
+			border: 1px solid $editor-lightest;
+			padding: 10px 15px;
+			margin-bottom: 10px;
+			font-size: 11px;
+
+			&.current {
+				font-weight: bold;
+			}
+
+			.embroidery-revision-item__tools-current {
+				color: $editor-accent;
+			}
+		}
+
+		&:hover:not(.embroidery-revision-current-preview) {
+			background-color: fade_out($editor-background, 0.7) ;
+		}
+
+		&:not(:hover), &.embroidery-revision-current-preview {
+
+			.embroidery-revision-item__tools-delete {
+				display: none;
+			}
+		}
+
+		&-loading {
+
+			.embroidery-revision-item__tools-current {
+				display: none;
+			}
+
+			.embroidery-revision-item__tools-delete {
+				display: none;
+			}
+		}
+
+		&:not(.embroidery-revision-item-loading) {
+
+			.embroidery-revision-item__tools-spinner {
+				display: none;
+			}
+		}
+
+		&__gravatar {
+			border-radius: 50%;
+			overflow: hidden;
+
+			img {
+				display: block;
+			}
+		}
+
+		&__details {
+			@include padding-start(15px);
+			flex-grow: 1;
+			cursor: pointer;
+		}
+
+		&__tools-delete {
+			cursor: pointer;
+		}
+	}
+
+	&meta {
+		padding-top: 5px;
+		font-size: 10px;
+		font-weight: bold;
+	}
+
+	&current-preview {
+		background-color: $editor-background;
+	}
+}
+
+#embroidery-restore-autosave-dialog.dialog-widget {
+	background-color: rgba(0, 0, 0, 0.3);
+}
