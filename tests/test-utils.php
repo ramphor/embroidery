@@ -3,7 +3,7 @@
 class Embroidery_Test_Utils extends WP_UnitTestCase {
 
 	public function test_getYoutubeId() {
-		$youtube_id = '9uOETcuFjbE';
+		$youtube_id = 'WhWc3b3KhnY';
 		$youtube_urls = [
 			'https://www.youtube.com/watch?v=' . $youtube_id,
 			'https://www.youtube.com/watch?v=' . $youtube_id . '&feature=player_embedded',

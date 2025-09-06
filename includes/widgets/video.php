@@ -91,7 +91,7 @@ class Widget_Video extends Widget_Base {
 				'label' => __( 'Link', 'embroidery' ),
 				'type' => Controls_Manager::TEXT,
 				'placeholder' => __( 'Enter your YouTube link', 'embroidery' ),
-				'default' => 'https://www.youtube.com/watch?v=9uOETcuFjbE',
+				'default' => 'https://www.youtube.com/watch?v=WhWc3b3KhnY',
 				'label_block' => true,
 				'condition' => [
 					'video_type' => 'youtube',

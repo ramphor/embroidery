@@ -365,7 +365,7 @@ class Group_Control_Background extends Group_Control_Base {
 		$fields['video_link'] = [
 			'label' => _x( 'Video Link', 'Background Control', 'embroidery' ),
 			'type' => Controls_Manager::TEXT,
-			'placeholder' => 'https://www.youtube.com/watch?v=9uOETcuFjbE',
+			'placeholder' => 'https://www.youtube.com/watch?v=WhWc3b3KhnY',
 			'description' => __( 'YouTube link or video file (mp4 is recommended).', 'embroidery' ),
 			'label_block' => true,
 			'default' => '',
